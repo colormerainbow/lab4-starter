@@ -1,3 +1,17 @@
 * {
     box-sizing: border-box;
 }
+.myp {
+    color: red;
+}
+body {
+    background-color: #fff;
+    color: #333;
+    transition: all 0.5s;
+    // transition helps with easing the switch
+}
+
+.dark {
+    background-color: #333;
+    color: #ddd;
+}
