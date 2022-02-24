@@ -23,7 +23,7 @@ let area = document.querySelector('.area1');
 console.log(area);
 */
 
-let paras = document.querySelectorAll('p');
+const paras = document.querySelectorAll('p');
 
 //paras is a list of things, add a class to each of the items
 paras.forEach( (item) => {
@@ -55,3 +55,18 @@ switchButton.addEventListener('click', newtheme);
 function newtheme(e) {
     e.target.parentNode.classList.toggle('dark');
 };
+
+// html collection array can access the images - grabs all images in the entire document using this command - this changes the source attribute for each image
+const first = document.images[0];
+first.addEventListener('click', (e) => {
+    e.target.src="https://unsplash.it/199";
+})
+
+//check console to see all properties and methods. Refer to the body tag this way
+console.log(document.body);
+//displays the containing element of area1
+console.log(document.querySelector('.area1').parentElement);
+//displays all the diff childnodes of area1
+console.log(document.querySelector('.area1').childNodes);
+//displays all the element nodes of area1
+console.log(document.querySelector('.area1').children);

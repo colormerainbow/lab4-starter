@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Boxes using DOM methods</title>
+    <style>
+        .container {
+            border: 5px solid;
+            padding: 3rem;
+            display: grid;
+            /* ram repeat autofill minmax method */
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            grid-gap: 1rem;
+        }
+
+        .ball {
+            /*put the words inside the ball */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            background-color: #333;
+            color: #ddd;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+
+    </style>
+</head>
+<body>
+    <section class="container">
+<!--
+        <div class="ball">Ball</div> -->
+
+    </section>
+
+
+    <script>
+        /* create shortcut ref for the section element */
+        const container = document.querySelector('.container');
+
+        /* make an element to add to the container */
+        const ball = document.createElement('DIV');
+        /* using classList allows you to add it, but if you use className, it is a string and will overwrite all the other classes */
+        ball.classList.add('ball');
+        const txt = document.createTextNode('ball prototype');
+        ball.appendChild(txt);
+
+        /* add the newly created element to the page - inside container - append adds to the end*/
+        container.appendChild(ball);
+
+        console.log(ball.nodeType);
+        console.log(ball.parentElement);
+        console.log(ball.className, ball.classList);
+
+        /* add a button so reader can make balls too */
+        const btn = document.createElement('BUTTON');
+        const btnTxt = document.createTextNode('Make Balls');
+        btn.appendChild(btnTxt);
+        document.body.appendChild(btn);
+
+        /* make button interactive */
+        btn.addEventListener('click', renderBoxes);
+        function renderBoxes(e) {
+            const tempHolder = document.createDocumentFragment();
+            
+            for(let i =0;i < 10; i++) {
+                console.log(i); /*rough test to be sure works and not infinite loop */
+                
+                  /* make an element to add to the container */
+                  const ball2 = document.createElement('DIV');
+                /* using classList allows you to add it, but if you use className, it is a string and will overwrite all the other classes */
+                ball2.classList.add('ball');
+                const txt2 = document.createTextNode('Ball ' + i);
+                ball2.appendChild(txt2);
+                tempHolder.appendChild(ball2);
+            };
+            container.innerHTML = ''; /*wipes the page before it draws */
+            container.appendChild(tempHolder);
+        };
+
+    </script>
+</body>
+</html>
